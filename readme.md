@@ -37,7 +37,7 @@ Mrs. Hudson isn't as interested in the control numbers as she is in their minimu
 each recipe **i** find the minimum prime divisor of number **z<sub>i</sub>**. If this divisor exceeds **100**, then you
 do not have to find it, print **-1**.
 
-##### Input
+### Input
 The first line contains the single integer **n (1 ≤ n ≤ 10<sup>4</sup>)**. The second line contains space-separated
 prices of the spices **a<sub>0</sub>**, **a<sub>1</sub>**, **...**, **a<sub>n</sub> - 1**, where ai is an integer
 (**1 ≤ a<sub>i</sub> ≤ 10<sup>18</sup>**).
@@ -56,11 +56,11 @@ guaranteed that all digits of the pattern (including the digits that are represe
 Please do not use the %lld specificator to read or write 64-bit integers in С++, in is preferred to use cin, cout,
 strings or the %I64d specificator instead.
 
-##### Output
+### Output
 For each recipe count by what **minimum prime number** the control number is **divided** and print this prime number
 on the single line. If this number turns out **larger than 100, print -1**.
 
-##### Examples
+### Examples
 Input
 ```
 1
@@ -103,7 +103,7 @@ Output
 -1
 ```
 
-##### Note
+### Note
 In the **first test** any one-digit number in the binary system matches. The jar is only one and its price is equal to
 **1**, the number **c** is also equal to **1**, the control number equals **2**. The minimal prime divisor of **2** is
 **2**.
