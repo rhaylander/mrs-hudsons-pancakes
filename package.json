@@ -1,0 +1,18 @@
+{
+  "name": "mrs-hudsons-pancakes",
+  "version": "1.0.0",
+  "description": "brute force algorithm solution ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rhaylander Almeida",
+  "license": "MIT",
+  "engines": {
+    "node": "~4.8"
+  },
+  "dependencies": {
+    "big-integer": "^1.6.26",
+    "lodash": "^4.17.5"
+  }
+}
