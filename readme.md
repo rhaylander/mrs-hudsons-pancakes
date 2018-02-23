@@ -1,5 +1,7 @@
 # E. Mrs. Hudson's Pancakes
 
+**Source**: http://codeforces.com/problemset/problem/156/E
+
 **Time limit per test**: 5 seconds
 
 **Memory limit per test**: 256 megabytes
