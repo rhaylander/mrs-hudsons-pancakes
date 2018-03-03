@@ -1,3 +1,40 @@
+**Técnicas Avançadas de Programação**
+Sistemas de Informação – 5 periodo
+Grupo 2
+
+**Integrantes**: 
+Rhaylander Almeida
+
+**Tema**: Força Bruta
+**Problema**: E. Mrs. Hudson's Pancakes
+**Dificuldade**: 10
+**Link**: [http://codeforces.com/problemset/problem/156/E](http://codeforces.com/problemset/problem/156/E)
+
+**Explicação do problema**
+O problema gira em torno da produçaão de panquecas por Mrs. Hudson. O problema fala que ela aprendeu `m` novas receitas que são baseadas em `n` especiarias, que ficam na cozinha em jarras enumeradas de `0` a `n - 1`. Cada jarra possui o valor da especiaria em seu rótulo, um inteiro `a(i)`.
+
+Sabe-se três valores para cada i-ésima receita: `d(i)`, `s(i)`, `c(i)`. `d(i)` e `c(i)` são inteiros, e `s(i)` representa o padrão de um inteiro escrito na base `d(i)`. O padrão possui números, letras (A-F para inteireos maior do que 9) e interrogaçōes (`?`). Um número `x` na base `d(i)` atende ao padrão `s(i)` se conseguirmos substituir cada `?` por uma letra ou número. O número `40A9875` (0040A9875) na base numérica `11` atende ao padrão `??4??987?`, e o número `4A9875` nao atende.
+
+Para fazer uma i-ésima receita, Mrs. Hudson deve pegar todas as jarras com números da base `d(i)` que atendem ao padrão `s(i)`. O número de controle da receita (`z(i)`) é definida como a soma de `c(i)` e o produto dos preços de todas as jarras escolhidas. `z(i) = c(i) + (a(0) * a(1) * ... * a(j))`, onde `j` representa todos os números da base `d(i)` que atendem ao padrão `s(i)`.
+
+1 - Entrada:
+A primeira linha contém apenas um inteiro `n` (1 ≤ n ≤ 10 ^ 4).
+A segunda linha contém os preços das especiarias separados por espaços `a(0), a(1), ..., a(n - 1)`.
+A terceira linha contém apenas um inteiro `m` (1 ≤ a(i) ≤ 10 ^ 18).
+As próximas `m` linhas descrevem as receitas, uma por linha seguindo o seguinte formato `d(i) s(i) c(i)`. Especificações: 2 ≤ d(i) ≤ 16; s(i) possui números de "0" à "9", letras de "A" à  "F" e interrogaçōes (?); 1 ≤ c(i) ≤ 10 ^ 18.
+
+2 - Saida
+Para cada receita, procure o menor número primo pelo qual o nuúmero de controle é divisível, e imprima 1 resultado por linha. Se o número primo for maior que 100, imprima -1.
+
+**Explicação da solução**
+Primeiro, fazemos o carregamento e validacao do input, e um array com todos os primos menores do que 100 é criado. A partir deste ponto, é hora de começar a processar as receitas. 
+
+Para cara receita, nós procuramos por todos os números da base `d(i)` que atendem ao padrão `s(i)` e que seu valor seja menor que o número de especiarias (o número encontrado será utilizado para acessar o array de especiarias a fim de encontrar o produto de precos ao calcular o número de controle da receita). Esssa é a parte mais interessante do problema, encontrar todos os números que atendem ao padrão fornecido. Para isso, todos os simbolos `?` são substituidos por `(.)` com o objetivo de transformar o símbolo em uma RegExp. Após isso, nós percorremos um `for` a partir de `k = 0` até `k < spices.length`, transformamos `k` para a base `d(i)` e finalizamos o tratamento desse número por fazendo um `padLeft` com `0` a fim de igualar o número de caracteres do padrão `s(i)`. Agora, nós ja temos nossa RegExp pronta e o número na base `d(i)` tratado, só nos resta verificar se o número atende ao padrão, e se positivo, armazena-lo para o calculo do produto.
+
+Possuindo todos os números armazenados em um array, só nos resta seguir a fórmula fornecida para calcular o número de controle e verificar se existe um divisor primo menor do que 100. Se existir, ele será impresso, caso contrário o número -1 será impresso.
+
+**Solução**
+```javascript
 'use strict';
 
 const fs = require('fs');
@@ -51,7 +88,7 @@ const loadInput = () => (
             recipesNumber: parseInt(lines[2]),
             recipes: lines.slice(3).map((recipe) => {
                 const recipeParts = recipe.split(' ');
-                
+
                 return {
                     radix: parseInt(recipeParts[0]),
                     pattern: recipeParts[1],
@@ -148,3 +185,4 @@ const run = () => {
 run().finally(() => {
     process.exit(0);
 });
+```
